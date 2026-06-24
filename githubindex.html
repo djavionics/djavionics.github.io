@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRG Hashmal Outreach</title>
+
+    <!-- Global Browser Favicon Configuration -->
+    <link rel="icon" type="image/png" href="img/home_favicon.png">
+    <link rel="apple-touch-icon" href="img/home_favicon.png">
+
+    <!-- Essential Meta Tags for Social Media Previews (Calibrated for GitHub Pages) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://djavionics.github.io/index.html">
+    <meta property="og:title" content="NRG Hashmal Outreach Project">
+    <meta property="og:description" content="Welcome to the main hub. An interactive gateway to cultural, musical, and spiritual initiatives.">
+    
+    <!-- Absolute GitHub path to your dedicated home thumbnail graphic -->
+    <meta property="og:image" content="http://djavionics.github.io/img/home_thumbnail.jpg">
+    <meta property="og:image:secure_url" content="https://djavionics.github.io/img/home_thumbnail.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+
+    <!-- Twitter / X Card Link Previews -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="http://djavionics.github.io/index.html">
+    <meta name="twitter:title" content="NRG Hashmal Outreach Project">
+    <meta name="twitter:description" content="Welcome to the main hub. An interactive gateway to cultural, musical, and spiritual initiatives.">
+    <meta name="twitter:image" content="http://djavionics.github.io/img/home_thumbnail.jpg">
+
+    <style>
+        /* Global Styles & Theme Colors */
+        :root {
+            --bg-dark: #0a0a0f;
+            --neon-blue: #00f0ff;
+            --neon-pink: #ff00ff;
+            --neon-yellow: #ffea00;
+            --glass-translucent: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(255, 0, 255, 0.12) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 4rem 1.5rem;
+        }
+
+        /* Intro Description Section */
+        .intro-container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 3.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .intro-container h1 {
+            font-size: 2rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: #e0e0e6;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.2rem;
+        }
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Highlight Classes */
+        .highlight-blue { color: var(--neon-blue); font-weight: 600; text-shadow: 0 0 8px rgba(0, 240, 255, 0.2); }
+        .highlight-pink { color: var(--neon-pink); font-weight: 600; text-shadow: 0 0 8px rgba(255, 0, 255, 0.2); }
+        .highlight-yellow { color: var(--neon-yellow); font-weight: 600; text-shadow: 0 0 8px rgba(255, 234, 0, 0.2); }
+
+        /* Read More Button */
+        .more-text { display: none; }
+        .read-more-btn {
+            background: transparent;
+            border: none;
+            color: var(--neon-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .read-more-btn:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        /* Central Header & Large Logo Container */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            width: 100%;
+            max-width: 850px;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 650px;
+            aspect-ratio: 2 / 1;
+            z-index: 2;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            border-radius: 16px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, rgba(255, 0, 255, 0.15) 70%, transparent 100%);
+            filter: blur(25px);
+            z-index: -1;
+            animation: pulseAura 4s ease-in-out infinite alternate;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.3));
+        }
+
+        /* Dynamic Main Menu Caption Styling */
+        .menu-caption {
+            max-width: 800px;
+            text-align: center;
+            font-size: 1.15rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Projects Grid System */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            width: 100%;
+            max-width: 1000px;
+            padding: 1rem;
+            z-index: 2;
+        }
+
+        /* Translucent Glassmorphism Card */
+        .project-card {
+            background: var(--glass-translucent);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .project-img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #0f0f14;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            opacity: 0.75;
+        }
+
+        .project-info {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-info h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .project-info p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #b5b5c0;
+            transition: color 0.3s ease;
+        }
+
+        /* Interactive Hover: Full White Flip */
+        .project-card:hover {
+            background: var(--glass-hover);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 240, 255, 0.3), 0 15px 25px rgba(255, 0, 255, 0.2);
+            border-color: rgba(255, 255, 255, 1);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.06);
+            opacity: 1;
+        }
+
+        .project-card:hover .project-info h2 {
+            color: var(--bg-dark);
+            font-weight: 700;
+        }
+
+        .project-card:hover .project-info p {
+            color: #1a1a24;
+            font-weight: 500;
+        }
+
+        @keyframes pulseAura {
+            0% { transform: scale(0.96); opacity: 0.8; }
+            100% { transform: scale(1.04); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .intro-container { padding: 1.5rem; text-align: left; }
+            .intro-text { font-size: 0.95rem; }
+            .logo-container { width: 100%; max-width: 360px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="intro-container">
+        <h1>NRG Hashmal Outreach Project</h1>
+        <div class="intro-text" id="intro-content">
+            <p>Loading overview introduction...</p>
+        </div>
+        <button class="read-more-btn" id="read-more-btn" style="display: none;" onClick="toggleReadMore()">Read More...</button>
+    </section>
+
+    <header>
+        <div class="logo-container">
+            <img src="img/banner.jpg" alt="NRG Muzik Logo" class="logo-img">
+        </div>
+    </header>
+
+    <p class="menu-caption" id="main-menu-caption">Loading menu directory...</p>
+
+    <main class="projects-grid">
+        <a href="prjgrid1/index.html" class="project-card">
+            <div class="project-img-wrapper">
+                <img src="img/gridprj1.jpg" alt="Panim el Panim Initiative" class="project-img">
+            </div>
+            <div class="project-info">
+                <h2 id="prj1-title">Loading Title...</h2>
+                <p id="prj1-caption">Loading description copy...</p>
+            </div>
+        </a>
+    </main>
+
+    <script>
+        async function loadAllExternalContent() {
+            await loadLandingDescription();
+            await loadMainMenuCaption();
+            await loadGridCardOne();
+        }
+
+        async function loadLandingDescription() {
+            const contentDiv = document.getElementById('intro-content');
+            const readMoreBtn = document.getElementById('read-more-btn');
+            try {
+                const response = await fetch('txt/landing_description.txt');
+                if (!response.ok) throw new Error('landing_description.txt not found');
+                const text = await response.text();
+
+                let paragraphs = [];
+                const pTagMatch = text.match(/<p[^>]*>([\s\S]*?)<\/p>/gi);
+                if (pTagMatch) {
+                    paragraphs = pTagMatch.map(p => p.replace(/<\/?p[^>]*>/gi, '').trim());
+                } else {
+                    paragraphs = text.split(/\n\s*\n/).map(p => p.trim()).filter(p => p.length > 0);
+                }
+
+                if (paragraphs.length === 0) return;
+                contentDiv.innerHTML = '';
+
+                const visiblePara = document.createElement('p');
+                visiblePara.innerHTML = paragraphs[0];
+                contentDiv.appendChild(visiblePara);
+
+                if (paragraphs.length > 1) {
+                    const hiddenSpan = document.createElement('span');
+                    hiddenSpan.className = 'more-text';
+                    hiddenSpan.id = 'more-text';
+                    for (let i = 1; i < paragraphs.length; i++) {
+                        const p = document.createElement('p');
+                        p.innerHTML = paragraphs[i];
+                        hiddenSpan.appendChild(p);
+                    }
+                    contentDiv.appendChild(hiddenSpan);
+                    readMoreBtn.style.display = 'inline-block';
+                }
+            } catch (e) {
+                console.error(e);
+                contentDiv.innerHTML = `<p>Welcome to NRG Hashmal Outreach Project.</p>`;
+            }
+        }
+
+        async function loadMainMenuCaption() {
+            const captionEl = document.getElementById('main-menu-caption');
+            try {
+                const response = await fetch('txt/main_menu_caption.txt');
+                if (!response.ok) throw new Error('main_menu_caption.txt not found');
+                captionEl.textContent = (await response.text()).trim();
+            } catch (e) {
+                console.error(e);
+                captionEl.textContent = "Selectable Projects & Core Initiatives";
+            }
+        }
+
+        async function loadGridCardOne() {
+            const titleEl = document.getElementById('prj1-title');
+            const captionEl = document.getElementById('prj1-caption');
+            
+            try {
+                const resTitle = await fetch('txt/prjgrid1_title.txt');
+                if (!resTitle.ok) throw new Error('prjgrid1_title.txt not found');
+                titleEl.textContent = (await resTitle.text()).trim();
+            } catch (e) {
+                console.error(e);
+                titleEl.textContent = "Panim kEl Panim Initiative";
+            }
+
+            try {
+                const resCaption = await fetch('txt/prjgrid1_caption.txt');
+                if (!resCaption.ok) throw new Error('prjgrid1_caption.txt not found');
+                captionEl.textContent = (await resCaption.text()).trim();
+            } catch (e) {
+                console.error(e);
+                captionEl.textContent = "Click here to enter the Ten Lost Tribes initiative.";
+            }
+        }
+
+        function toggleReadMore() {
+            const moreText = document.getElementById('more-text');
+            const btnText = document.getElementById('read-more-btn');
+            if (moreText.style.display === 'inline' || moreText.style.display === 'block') {
+                moreText.style.display = 'none';
+                btnText.innerHTML = 'Read More...';
+            } else {
+                moreText.style.display = 'block';
+                moreText.style.marginTop = '1.2rem'; 
+                btnText.innerHTML = 'Read Less';
+            }
+        }
+
+        window.onload = loadAllExternalContent;
+    </script>
+</body>
+</html>
