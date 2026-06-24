@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panim el Panim Initiative | NRG Hashmal</title>
+    <style>
+        /* Global Styles & Theme Colors matching nrg.dx.am */
+        :root {
+            --bg-dark: #0a0a0f;
+            --neon-blue: #00f0ff;
+            --neon-pink: #ff00ff;
+            --neon-yellow: #ffea00;
+            --glass-translucent: rgba(255, 255, 255, 0.03);
+            --glass-hover: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 4rem 1.5rem;
+        }
+
+        /* Content Container System */
+        .content-wrapper {
+            width: 100%;
+            max-width: 850px;
+            background: var(--glass-translucent);
+            border: 1px solid var(--border-glow);
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+            margin-bottom: 3rem;
+        }
+
+        h1.page-title {
+            font-size: 2.2rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        /* Typography & Custom WordPress Highlights */
+        .narrative-text {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: #e2e2e9;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .narrative-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .narrative-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Custom Blockquote Styling for the Malbim Quote */
+        blockquote {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--neon-pink);
+            padding: 1.5rem;
+            margin: 1.8rem 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: #d1d1db;
+        }
+
+        blockquote strong {
+            color: #ffffff;
+            font-style: normal;
+        }
+
+        /* Dynamic Neon Highlight Tones */
+        .highlight-blue { color: var(--neon-blue); font-weight: 600; text-shadow: 0 0 8px rgba(0, 240, 255, 0.2); }
+        .highlight-pink { color: var(--neon-pink); font-weight: 600; text-shadow: 0 0 8px rgba(255, 0, 255, 0.2); }
+        .highlight-yellow { color: var(--neon-yellow); font-weight: 600; text-shadow: 0 0 8px rgba(255, 234, 0, 0.2); }
+
+        /* Read More Mechanism */
+        .more-text { 
+            display: none; 
+        }
+
+        .read-more-btn-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .read-more-btn {
+            background: transparent;
+            border: none;
+            color: var(--neon-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+        }
+
+        /* Calculator Layout Container below Text */
+        .calculator-section {
+            width: 100%;
+            max-width: 850px;
+            text-align: center;
+        }
+
+        .calculator-section h2 {
+            font-size: 1.4rem;
+            color: var(--neon-pink);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+        }
+
+        .calculator-frame-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        .calc-iframe {
+            width: 100%;
+            height: 620px; /* Adjust if your calculator is taller or shorter */
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+        }
+
+        /* Back Navigation Link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #8b8b9c;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: var(--neon-blue);
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper { padding: 2rem 1.5rem; text-align: left; }
+            .narrative-text { font-size: 1rem; }
+            h1.page-title { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to Hub Navigation -->
+    <a href="../index.html" class="back-link">← Return to Main Directory</a>
+
+    <!-- Main Landing Story Block -->
+    <section class="content-wrapper">
+        <h1 class="page-title">Panim el Panim Initiative</h1>
+        
+        <div class="narrative-text" id="narrative-content">
+            <p>Loading initiative overview data...</p>
+        </div>
+
+        <div class="read-more-btn-container">
+            <button class="read-more-btn" id="read-more-btn" style="display: none;" onclick="toggleReadMore()">Read More...</button>
+        </div>
+    </section>
+
+    <!-- Calculator Section (Safely placed right below the text container) -->
+    <section class="calculator-section">
+        <h2>System Utility Module</h2>
+        <div class="calculator-frame-box">
+            <iframe src="hml5calc_v1.01.html" title="Interactive System Calculator" class="calc-iframe"></iframe>
+        </div>
+    </section>
+
+    <script>
+        async function loadLandingDescription() {
+            const contentDiv = document.getElementById('narrative-content');
+            const readMoreBtn = document.getElementById('read-more-btn');
+
+            try {
+                // Fetching the text folder from your current directory context
+                const response = await fetch('txt/landing_description.txt');
+                if (!response.ok) throw new Error('landing_description.txt missing');
+                const text = await response.text();
+
+                // Advanced paragraph isolator (supports blockquotes and standard spacing cleanly)
+                let paragraphs = [];
+                const pTagMatch = text.match(/<p[^>]*>([\s\S]*?)<\/p>/gi);
+
+                if (pTagMatch) {
+                    paragraphs = pTagMatch.map(p => p.trim());
+                } else {
+                    // Splits nicely by double returns in case of raw prose layouts
+                    paragraphs = text.split(/\n\s*\n/).map(p => p.trim()).filter(p => p.length > 0);
+                }
+
+                if (paragraphs.length === 0) return;
+
+                contentDiv.innerHTML = '';
+
+                // First Paragraph / Intro Segment stays permanently visible
+                const visibleContainer = document.createElement('div');
+                visibleContainer.innerHTML = paragraphs[0].startsWith('<p') ? paragraphs[0] : `<p>${paragraphs[0]}</p>`;
+                contentDiv.appendChild(visibleContainer);
+
+                // Subsequent paragraphs get neatly wrapped inside the expandable read-more block
+                if (paragraphs.length > 1) {
+                    const hiddenSpan = document.createElement('div');
+                    hiddenSpan.className = 'more-text';
+                    hiddenSpan.id = 'more-text';
+
+                    for (let i = 1; i < paragraphs.length; i++) {
+                        const segment = paragraphs[i];
+                        const tempDiv = document.createElement('div');
+                        // Ensures quotes or customized HTML components don't get wrapped blindly into unneeded paragraph tags
+                        if (segment.startsWith('<p') || segment.startsWith('<blockquote')) {
+                            tempDiv.innerHTML = segment;
+                        } else {
+                            tempDiv.innerHTML = `<p>${segment}</p>`;
+                        }
+                        hiddenSpan.appendChild(tempDiv);
+                    }
+
+                    contentDiv.appendChild(hiddenSpan);
+                    readMoreBtn.style.display = 'inline-block';
+                }
+
+            } catch (error) {
+                console.error('Error loading landing presentation:', error);
+                contentDiv.innerHTML = `<p>Welcome to Panim el Panim Initiative. Content updating shortly.</p>`;
+            }
+        }
+
+        function toggleReadMore() {
+            const moreText = document.getElementById('more-text');
+            const btnText = document.getElementById('read-more-btn');
+
+            if (moreText.style.display === 'inline' || moreText.style.display === 'block') {
+                moreText.style.display = 'none';
+                btnText.innerHTML = 'Read More...';
+            } else {
+                moreText.style.display = 'block';
+                moreText.style.marginTop = '1.5rem'; 
+                btnText.innerHTML = 'Read Less';
+            }
+        }
+
+        window.onload = loadLandingDescription;
+    </script>
+
+</body>
+</html>

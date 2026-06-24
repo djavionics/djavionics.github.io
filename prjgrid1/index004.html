@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panim el Panim Initiative | NRG Hashmal</title>
+    <style>
+        /* Global Styles & Theme Colors */
+        :root {
+            --bg-dark: #0a0a0f;
+            --neon-blue: #00f0ff;
+            --neon-pink: #ff00ff;
+            --neon-yellow: #ffea00;
+            --glass-translucent: rgba(255, 255, 255, 0.03);
+            --glass-hover: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 4rem 1.5rem;
+        }
+
+        /* Top Banner Image Styling */
+        .page-banner-container {
+            width: 100%;
+            max-width: 850px;
+            margin-bottom: 2rem;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-banner {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Content Container System */
+        .content-wrapper {
+            width: 100%;
+            max-width: 850px;
+            background: var(--glass-translucent);
+            border: 1px solid var(--border-glow);
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+            margin-bottom: 2rem;
+        }
+
+        h1.page-title {
+            font-size: 2.2rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        /* Typography & Highlights */
+        .narrative-text {
+            font-size: 1.08rem;
+            line-height: 1.8;
+            color: #e2e2e9;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .narrative-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .narrative-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        blockquote {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--neon-pink);
+            padding: 1.5rem;
+            margin: 1.8rem 0;
+            border-radius: 4px;
+            font-style: italic;
+            color: #d1d1db;
+        }
+
+        blockquote strong {
+            color: #ffffff;
+            font-style: normal;
+        }
+
+        .highlight-blue { color: var(--neon-blue); font-weight: 600; text-shadow: 0 0 8px rgba(0, 240, 255, 0.2); }
+        .highlight-pink { color: var(--neon-pink); font-weight: 600; text-shadow: 0 0 8px rgba(255, 0, 255, 0.2); }
+        .highlight-yellow { color: var(--neon-yellow); font-weight: 600; text-shadow: 0 0 8px rgba(255, 234, 0, 0.2); }
+
+        /* Read More Mechanism */
+        .more-text { display: none; }
+        .read-more-btn-container { text-align: center; margin-top: 1.5rem; }
+        .read-more-btn {
+            background: transparent;
+            border: none;
+            color: var(--neon-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+        }
+        .read-more-btn:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+        }
+
+        /* Automated Social Network Bar */
+        .social-networks-bar {
+            width: 100%;
+            max-width: 850px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-icon-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+            transition: filter 0.3s ease;
+        }
+
+        /* Neon Glow Hover Effect */
+        .social-icon-link:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.3);
+        }
+
+        .social-icon-link:hover img {
+            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8)) brightness(1.2);
+        }
+
+        /* Video Section Styling */
+        .video-section {
+            width: 100%;
+            max-width: 850px;
+            margin-bottom: 3.5rem;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-size: 1.4rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .video-responsive-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            background: #000;
+        }
+
+        .video-responsive-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Calculator Layout Container */
+        .calculator-section {
+            width: 100%;
+            max-width: 850px;
+            text-align: center;
+        }
+
+        .calculator-section h2 {
+            font-size: 1.4rem;
+            color: var(--neon-pink);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+        }
+
+        .calculator-frame-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        .calc-iframe {
+            width: 100%;
+            height: 620px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #8b8b9c;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover { color: var(--neon-blue); }
+
+        @media (max-width: 768px) {
+            .content-wrapper { padding: 2rem 1.5rem; text-align: left; }
+            .narrative-text { font-size: 1rem; }
+            h1.page-title { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-link">← Return to Main Directory</a>
+
+    <!-- Page Banner -->
+    <div class="page-banner-container">
+        <img src="img/banner.jpg" alt="Panim el Panim Presentation Banner" class="page-banner">
+    </div>
+
+    <!-- Main Landing Story Block -->
+    <section class="content-wrapper">
+        <h1 class="page-title">Panim el Panim Initiative</h1>
+        <div class="narrative-text" id="narrative-content">
+            <p>Loading initiative overview data...</p>
+        </div>
+        <div class="read-more-btn-container">
+            <button class="read-more-btn" id="read-more-btn" style="display: none;" onclick="toggleReadMore()">Read More...</button>
+        </div>
+    </section>
+
+    <!-- AUTOMATED SOCIAL BAR (Positioned perfectly between text card and video) -->
+    <nav class="social-networks-bar" id="social-container"></nav>
+
+    <!-- Video Presentation Section -->
+    <section class="video-section">
+        <h2>Video Presentation</h2>
+        <div class="video-responsive-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/TxrFMNiEmxk" title="Panim el Panim Video Presentation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <h2>System Utility Module</h2>
+        <div class="calculator-frame-box">
+            <iframe src="hml5calc_v1.01.html" title="Interactive System Calculator" class="calc-iframe" scrolling="no"></iframe>
+        </div>
+    </section>
+
+    <script>
+        // Central script runner
+        async function loadAllContent() {
+            await loadLandingDescription();
+            await loadDynamicSocials();
+        }
+
+        async function loadLandingDescription() {
+            const contentDiv = document.getElementById('narrative-content');
+            const readMoreBtn = document.getElementById('read-more-btn');
+            try {
+                const response = await fetch('txt/landing_description.txt');
+                if (!response.ok) throw new Error('landing_description.txt missing');
+                const text = await response.text();
+
+                let paragraphs = [];
+                const pTagMatch = text.match(/<p[^>]*>([\s\S]*?)<\/p>/gi);
+                if (pTagMatch) {
+                    paragraphs = pTagMatch.map(p => p.trim());
+                } else {
+                    paragraphs = text.split(/\n\s*\n/).map(p => p.trim()).filter(p => p.length > 0);
+                }
+
+                if (paragraphs.length === 0) return;
+                contentDiv.innerHTML = '';
+
+                const visibleContainer = document.createElement('div');
+                visibleContainer.innerHTML = paragraphs[0].startsWith('<p') ? paragraphs[0] : `<p>${paragraphs[0]}</p>`;
+                contentDiv.appendChild(visibleContainer);
+
+                if (paragraphs.length > 1) {
+                    const hiddenSpan = document.createElement('div');
+                    hiddenSpan.className = 'more-text';
+                    hiddenSpan.id = 'more-text';
+
+                    for (let i = 1; i < paragraphs.length; i++) {
+                        const segment = paragraphs[i];
+                        const tempDiv = document.createElement('div');
+                        if (segment.startsWith('<p') || segment.startsWith('<blockquote')) {
+                            tempDiv.innerHTML = segment;
+                        } else {
+                            tempDiv.innerHTML = `<p>${segment}</p>`;
+                        }
+                        hiddenSpan.appendChild(tempDiv);
+                    }
+                    contentDiv.appendChild(hiddenSpan);
+                    readMoreBtn.style.display = 'inline-block';
+                }
+            } catch (error) {
+                console.error(error);
+                contentDiv.innerHTML = `<p>Welcome to Panim el Panim Initiative.</p>`;
+            }
+        }
+
+        // AUTOMATED SOCIAL LOADER ENGINE
+        async function loadDynamicSocials() {
+            const container = document.getElementById('social-container');
+            try {
+                const response = await fetch('txt/social_links.txt');
+                if (!response.ok) return; // Silent exit if file isn't uploaded yet
+                
+                const data = await response.text();
+                // Clean up entries and isolate individual link lines
+                const links = data.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                
+                container.innerHTML = ''; // Clear fallback states
+
+                links.forEach((url, index) => {
+                    const iconNumber = index + 1; // Generates 1, 2, 3, etc.
+                    
+                    const anchor = document.createElement('a');
+                    anchor.href = url;
+                    anchor.target = '_blank';
+                    anchor.className = 'social-icon-link';
+                    anchor.title = `Join our platform network link #${iconNumber}`;
+
+                    const img = document.createElement('img');
+                    img.src = `img/social_link${iconNumber}.png`;
+                    img.alt = `Social Icon ${iconNumber}`;
+                    
+                    // Fallback configuration if an icon file is accidentally missing
+                    img.onerror = function() {
+                        this.src = '../img/banner.jpg'; // temporary structural visual placeholder
+                        this.style.opacity = '0.3';
+                    };
+
+                    anchor.appendChild(img);
+                    container.appendChild(anchor);
+                });
+            } catch (e) {
+                console.error("Social dynamic builder error: ", e);
+            }
+        }
+
+        function toggleReadMore() {
+            const moreText = document.getElementById('more-text');
+            const btnText = document.getElementById('read-more-btn');
+            if (moreText.style.display === 'inline' || moreText.style.display === 'block') {
+                moreText.style.display = 'none';
+                btnText.innerHTML = 'Read More...';
+            } else {
+                moreText.style.display = 'block';
+                moreText.style.marginTop = '1.5rem'; 
+                btnText.innerHTML = 'Read Less';
+            }
+        }
+
+        window.onload = loadAllContent;
+    </script>
+</body>
+</html>
